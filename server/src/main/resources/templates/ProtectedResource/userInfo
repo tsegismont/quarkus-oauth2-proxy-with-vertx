@@ -3,27 +3,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Quarkus OAuth2 Proxy with Vert.x - Protected</title>
 </head>
 <body>
-<h1>Your profile information</h1>
-<p>Well, well, well, <strong>{userInfo.login}</strong>!</p>
+<p>Hello, {userInfo.login}!</p>
 <p>
-    {#if userInfo.email} It looks like your public email address is <strong>{userInfo.email}</strong>.
+    {#if userInfo.email} It looks like your public email address is {userInfo.email}.
     {#else} It looks like you don't have a public email. That's cool.
     {/if}
 </p>
 <p>
     {#if userInfo.privateEmails}
     With your permission, we were also able to dig up your private email addresses:
-<ul>
-    {#each value in userInfo.privateEmails}
-        <li><strong>{value}</strong></li>
-    {/each}
-</ul>
-{#else}
+        {userInfo.privateEmailsAsString}
+    {#else}
     Also, you're a bit secretive about your private email addresses.
-{/if}
+    {/if}
 </p>
 </body>
 </html>
